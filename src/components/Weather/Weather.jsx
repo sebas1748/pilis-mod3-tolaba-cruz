@@ -1,6 +1,7 @@
 import './Weather.css';
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { WeatherCardsContext } from "../../context/WeatherCardsContext";
+import {GoTrashcan} from "react-icons/go"
 
 const Weather = ({ weather }) => {
     const {id, name, latitude, longitude, temperature, windspeed} = weather
@@ -8,7 +9,14 @@ const Weather = ({ weather }) => {
     //console.log("ubicacion: " + JSON.stringify(weather));
 
     const {weatherCards, setWeatherCards} = useContext(WeatherCardsContext);
+    const [deleteWeather, setDeleteWeather] = useState('');
 
+    
+    const handleCardDelete = () => {
+        //Eliminar Tarjeta de Ubicación
+        setWeatherCards(weatherCards.filter((weatherCard) => weatherCard.id !== id))
+    }
+    
     //TODO tienes que modificar el like en la paleta
     // const handleFavorite = () => {
     //     setIsFavorite((isFavorite) => !isFavorite);
@@ -38,13 +46,13 @@ const Weather = ({ weather }) => {
                 <h3>Vel. del Viento: {windspeed}</h3>
                 
             </div>
-            {/* <div className="weather-actions">
+            <div className="weather-actions">
                 <div className="">
-                    <button className="btn-see-more" onClick={''}>
-                        Eliminar Ubicación
+                    <button className="btn-see-more" onClick={handleCardDelete}>
+                        <span className="btn-text">Eliminar </span><GoTrashcan/>
                     </button>
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
