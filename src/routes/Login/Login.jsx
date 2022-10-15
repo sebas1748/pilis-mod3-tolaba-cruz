@@ -5,46 +5,48 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
-
-    const {setCurrentUser} = useContext(UserContext)
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const { setCurrentUser } = useContext(UserContext)
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate()
-
+  
+    /* Local Storage */
     const onSubmit = (data) => {
-        localStorage.setItem('currentUser',JSON.stringify(data))
-        setCurrentUser(data)
-        navigate('/')
+      localStorage.setItem('currentUser', JSON.stringify(data))
+      setCurrentUser(data)
+      navigate('/')
     }
-
+  
     return (
-        <div className="sign-in-container">
-            <span>Ingresa con tu usuario y contraseña</span>
-            <form className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
-                <input
-                className='input-form'
-                type="text"
-                placeholder='Nombre de usuario'
-                {...register('username', {
-                    required : 'Debe ingresar su nombre de usuario'
-                    }
-                )
-                } />
-                <p>{errors.username?.message}</p>
-                <input
-                className='input-form'
-                type='password'
-                placeholder='Contraseña'
-                {...register('password', {
-                        required : 'Debe ingresar su contraseña'
-                    }
-                    )
+      <div className='sign-in-container'>
+        <form className='sign-in-form' onSubmit={handleSubmit(onSubmit)}>
+         <span>Ingresa con tu usuario y contraseña</span>
+          <input
+            className='input-form'
+            type="text"
+            placeholder='Nombre de usuario'
+            {...register('username', {
+                required : 'Debe ingresar su nombre de usuario'
+              }
+            )
+          } />
+          <p>{errors.username?.message}</p>
+          <input
+            className='input-form'
+            type='password'
+            placeholder='Contraseña'
+            {...register(
+                'password',
+                {
+                  required : 'Debe ingresar su contraseña'
                 }
-                />
-                <p>{errors.password?.message}</p>
-                <button className='btn-form' type='submit'>Iniciar Sesión</button>
-            </form>
-        </div>
+              )
+            }
+          />
+          <p>{errors.password?.message}</p>
+           <button className='btn-form-login' type='submit'>Iniciar Sesión</button>
+        </form>
+      </div>
     )
-}
-
-export default Login
+  }
+  
+  export default Login; 

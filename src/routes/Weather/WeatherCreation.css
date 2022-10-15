@@ -1,33 +1,52 @@
 .weather-new-container {
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
   }
   
   .weather-form {
+    background: -webkit-linear-gradient(-90deg, #B5D464 10%, #4C868E 90%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
+    width: 400px;
+    padding: 20px;
+    border: 5px solid #B5D464;
+    border-radius: 15px;
+  }
+
+  .weather-form:hover {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 15px;
+  }
+
+  .weather-form span {
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: bold;
   }
   
   .input-weather-name-form {
     background: none;
     background-color: white;
-    font-size: 18px;
+    font-size: 15px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 100%;
-    border: none;
-    border-radius: 0;
-    border-bottom: 1px solid #000;
+    width: 90%;
+    border-radius: 5px;
+    border-bottom: 3px solid #4C868E;
     margin: 25px 0px 5px 0px;
   }
-  
+
+  .input-weather-name-form:required {
+    border: 2px solid red;
+  }
+
   .input-weather-name-form:focus {
     outline: none;
   }
-  
+
   input[type="color"] {
     appearance: none;
     background: none;
@@ -37,4 +56,16 @@
     padding: 0;
     width: 100%;
     margin-top: 25px;
+  }
+
+
+  .btn-form {
+    background: #f58c2c;
+    font-weight: bold;
+  }
+
+  .btn-form:hover {
+    background: #FFFFFF;
+    color: #f58c2c;
+    border: 2px solid #f58c2c;
   }

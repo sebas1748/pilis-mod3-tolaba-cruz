@@ -1,12 +1,22 @@
 import './Weathers.css';
 import Weather from './Weather';
 import { WeatherCardsContext } from '../../context/WeatherCardsContext';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 
 const Weathers = () => {
     const weathers = useContext(WeatherCardsContext);
-    //console.log("ubicaciones: " + JSON.stringify(weathers));
+    const { weatherCards, setWeatherCards } = useContext(WeatherCardsContext);
+    //console.log("Esto no es local storage: " + JSON.stringify(weathers));
     
+    //setear contenido de LocalStorage
+    useEffect(() => {
+        const weatherStored = localStorage.getItem('weather')
+        console.log({weatherStored})
+        if (weatherStored) {
+            setWeatherCards(JSON.parse(weatherStored))
+        }
+      }, [])
+
     return(
         <div className='grid'>
         {weathers.weatherCards.map((weather) => (
