@@ -5,9 +5,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
 }
-  
-.fav {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-start;
+
+h1 {
+    color: #F58C2C;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 20px
 }

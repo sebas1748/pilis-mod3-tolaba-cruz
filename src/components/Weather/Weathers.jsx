@@ -19,9 +19,16 @@ const Weathers = () => {
 
     return(
         <div className='grid'>
-        {weathers.weatherCards.map((weather) => (
-            <Weather key={weather.id} weather={weather}/>
-        ))}
+            {weathers.weatherCards.length > 0 ?(
+                weathers.weatherCards.map((weather) => (
+                    <Weather key={weather.id} weather={weather}/>
+                ))
+            ) : (
+                <div className='title'>
+                    <h1>Cargar a Nueva Ubicación</h1>
+                </div>
+            )
+            }
         </div>
     );
 }
